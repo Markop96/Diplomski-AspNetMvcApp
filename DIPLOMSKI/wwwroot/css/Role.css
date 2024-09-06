@@ -1,0 +1,109 @@
+﻿
+
+.footer {
+    position: relative;
+}
+
+
+.naslov {
+    text-align: center;
+    font-size: 70px;
+    font-weight: 900;
+    color: #011401;
+    text-shadow: 8px 0 rgb(182 255 0);
+    padding-bottom: 50px;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+}
+.naslov1 {
+    text-align: center;
+    font-size: 70px;
+    font-weight: 900;
+    color: #011401;
+    text-shadow: 8px 0 rgb(182 255 0);
+    padding-bottom: 10px;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+}
+
+td {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+th {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+#dugme {
+    text-align: center;
+}
+
+.lli {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: justify;
+    color: dimgrey;
+}
+
+.kreirajNovi {
+    text-align: center;
+    padding-top: 50px;
+}
+
+    .kreirajNovi button {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 22px;
+        background-color: deeppink;
+        font-weight: 900;
+        border: solid 1px deeppink;
+        border-radius: 10px;
+        height: 60px;
+        width: 260px;
+    }
+
+    .kreirajNovi a {
+        text-decoration: none;
+        color: white;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+    }
+
+        .kreirajNovi a:hover {
+            color: greenyellow;
+        }
+
+.dugmeDodaj {
+    background-color:deeppink; 
+    color:white; 
+    font-weight:900; 
+    border: 2px solid deeppink; 
+    border-radius:10px;
+    font-size:30px;
+    margin-bottom:150px;
+}
+
+    .dugmeDodaj:hover {
+        border: 2px solid deeppink;
+        color: yellowgreen;
+        background-color: deeppink;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+    }
+
+
+    .inputKlasa {
+       width: 50%;
+       height:80px; 
+       text-align:center; 
+       border-radius:20px; 
+       border:solid 3px grey;
+       box-shadow: 0 0 25px rgba(0, 0, 0, 0.15); 
+       margin-top:20px;
+       margin-bottom:50px;
+    }
+
+.dugme {
+}
+
+    .dugme:hover {
+    transform:scale(1.2) !important;
+    }

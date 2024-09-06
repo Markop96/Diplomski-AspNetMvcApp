@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+    <style>
+        .dugme{
+        background-color: greenyellow;
+        padding: 15px;
+        border-radius: 50px;
+        font-weight: 900;
+        font-size: 20px;
+        color: black;
+        text-decoration: none;
+        }
+
+        .dugme:hover{
+            background-color: deeppink;
+            color:white;
+        }
+    </style>
+
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+        <a asp-area="Identity" asp-page="/Account/Register" class="dugme">REGISTRUJ NOVOG KORISNIKA</a>
+}

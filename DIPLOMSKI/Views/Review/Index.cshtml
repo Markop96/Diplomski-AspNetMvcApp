@@ -1,0 +1,52 @@
+﻿@model List<M_RENT_Aplikacija.Models.Recenzija>
+
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+
+<style>
+    .footer {
+        position: relative;
+    }
+
+    .sortImg {
+        width: 50px ;
+        margin-bottom:20px;
+        margin-left:50px;
+    }
+</style>
+
+
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <h2 class="naslov" style="padding-bottom:10px;">Sve recenzije</h2>
+
+    <div>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["RatingSortParm"]"><img src="~/Slike/sort.png" class="sortImg"/></a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <p style="margin-bottom:350px; text-align:center; font-size:30px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight:900">Trenutno nema dostupnih recenzija.</p>
+    }
+    else
+    {
+        @Html.Partial("TabelaRecenzija.cshtml", Model)
+
+        <p class="uvod" style="color:dimgray; font-size:20px; padding-top:40px;">
+            Administrator je odgovoran za praćenje recenzija i izvlačenje korisnih informacija iz njih kako
+            bi predložio ideje za unapređenje rada aplikacije. Takođe, administrator koristi recenzije
+            kako bi identifikovao greške i sugeriše zaposlenima moguća poboljšanja koja su izražena kroz recenzije!
+        </p>
+    }
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Korisnik"))
+{
+    <div style="text-align:center; margin-bottom:150px; margin-top:50px;">
+        <img src="~/Slike//TY.gif" style="width:600px;" />
+    </div>
+    <span>
+        <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Slike/strelica.png" alt="Vrati se nazad" style="height:130px;" /></a>
+    </span>
+    <p style="text-align:center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Dodavanjem ove recenzije dali ste svoj doprinos unapređenju ove stranice, klikom na strelicu vratite se nazad na početnu stranicu.</p>
+}

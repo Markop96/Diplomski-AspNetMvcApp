@@ -1,0 +1,207 @@
+﻿
+table{
+    text-align:center;
+}
+
+thead {
+    background: linear-gradient(to right, greenyellow,rgb(255, 48, 173), greenyellow);
+}
+th {
+    min-width:150px
+}
+tbody tr {
+    border-bottom: solid black 1px;
+    background: linear-gradient(to left, black 50%, greenyellow);
+    color: white;
+}
+
+td {
+    font-weight: 700;
+    height: 70px;
+    vertical-align: middle;
+}
+
+
+.upravljajDugme {
+    background-color:greenyellow;
+    font-weight:900;
+
+}
+
+    .upravljajDugme:hover {
+    
+        background-color:deeppink;
+        
+    }
+
+
+.dodajRezervaciju {
+    width: 50px;
+    margin-top: 20px;
+}
+
+    .dodajRezervaciju:hover {
+        transform: scale(1.15);
+    }
+
+.slikeD {
+    width:70px;
+}
+
+.komandnaLinija {
+    padding: 100px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 50, 0, 0.85);
+}
+
+.modal-content {
+    background-color: rgba(0, 50, 0, 0);
+    position: relative;
+    margin: 20% auto;
+    padding: 100px;
+    width: 70%;
+    text-align: center;
+    border: none;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.modal p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-weight: 900;
+    font-size: 45px;
+}
+
+.modal button {
+    border: none;
+    border-radius: 10% / 50%;
+    width: 10%;
+    padding: 10px;
+    margin: 1% 5%;
+    color: white;
+    font-weight: 900;
+}
+
+    .modal button:hover {
+        color: black;
+        transform: scale(1.3);
+        text-shadow: none !important;
+    }
+
+.poljeCena {
+    color: #ff0000;
+    background-color: greenyellow !important;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    border-radius:10px;
+    width:600px;
+    margin:0;
+}
+
+.polje {
+    width: 600px;
+}
+
+.date-picker {
+    background-color: rgba(209, 247, 148, 0.7) !important;
+    border: 2px solid green;
+    border-radius: 100px !important;
+    padding: 10px;
+    color: #333;
+    font-size: 30px !important;
+    font-weight: 600;
+    text-align: center !important;
+}
+
+    .date-picker:hover {
+        background-color: deeppink !important;
+        border-color: #ff69b4;
+        color: white;
+    }
+
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: inherit;
+    color: inherit;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+    input[type="date"]:focus {
+        border: 2px solid #ff69b4;
+        background-color: rgba(255, 105, 180, 0.2);
+    }
+
+.style1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align:center;
+    margin:0;
+}
+
+.label {
+padding-top:30px;
+padding-bottom:10px;
+font-size:30px;
+font-weight:900;
+}
+
+.edit1 {
+    background-color: rgb(209, 247, 148) !important;
+    font-size: 24px;
+}
+
+.inputKlasa {
+    width: 50%;
+    height: 80px;
+    text-align: center;
+    border-radius: 20px;
+    border: solid 3px grey;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 50px;
+}
+
+#searchInput {
+    width: 500px;
+    height: 50px;
+    box-shadow: none;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+<link rel="stylesheet" href="~/css/Role.css" />
+
+<h1 class="naslov" style="margin-top:70px;">DODAJ NOVU ULOGU</h1>
+
+<form asp-action="Create" method="post" style="text-align:center">
+    <div class="form-group">
+        <label asp-for="Name" class="lli">Naziv uloge:</label> <br />
+        <input asp-for="Name" class="inputKlasa"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary dugmeDodaj">DODAJ</button>
+</form>
+
+
+<span >
+    <a asp-area="" asp-controller="Roles" asp-action="Index"><img src="~/Slike/strelica.png" alt="Vrati se nazad" style="height:130px;" /></a>
+</span>

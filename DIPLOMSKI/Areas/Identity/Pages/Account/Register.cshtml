@@ -1,0 +1,120 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "REGISTRACIJA";
+}
+<link rel="stylesheet" href="~/css/Role.css" />
+
+<style>
+    .footer {
+        position-relative;
+    }
+
+    .naslov {
+        text-align: center;
+        font-size: 70px;
+        font-weight: 900;
+        color: #011401;
+        text-shadow: 8px 0 rgb(182 255 0);
+        padding-bottom: 30px;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+    }
+
+    .uvod {
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 28.5px;
+        font-weight: bolder;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: grey;
+    }
+
+    .texxt {
+        color: deeppink;
+        font-weight: 900;
+    }
+
+    .bg {
+        background-color: rgba(209, 247, 148, 0.5)
+    }
+</style>
+
+<h1 style="margin-top:80px;" class="naslov">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <span style="color:green;">REGISTRACIJA OD STRANE ADMINISTARTORA</span>
+        <p class="uvod" style="margin-top:50px;"> Moguća je registracija na odgovaraću ulogu koja izlazi iz okvira podrazumevanih.</p>
+        <p class="uvod"> Ova opcija je omogućena isključivo administratorima.</p>
+
+    }
+    else
+    {
+        <span>REGISTRACIJA</span>
+    }
+</h1>
+<div>
+    <div class="col-md-4 mx-auto" style="width:700px;">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2 class="uvod">Kreirajte novi profil</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control bg" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email" class="texxt">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control bg" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password" class="texxt">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control bg" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword" class="texxt">Confirm Password</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3" style="color:deeppink">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <select asp-for="Input.Role" class="form-select bg" aria-required="true">
+                        <option value="Korisnik" selected>Korisnik</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Zaposleni">Zaposleni</option>
+                    </select>
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Input.Role" value="Korisnik" />
+                }
+                <div id="roleValidationMessage" class="alert alert-danger" style="display: none; margin-top:30px; background-color:red; font-weight:900; color:white;">
+                    OBAVEZNO: Izaberite ulogu!
+                </div>
+            </div>
+            <div style="text-align:center">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <button id="registerSubmit" type="submit" class="btn btn-dark dugmeDodaj" style="margin-top:30px; background-color:green; border:none">REGISTRUJ KORISNIKA</button>
+                }
+                else
+                {
+                    <button id="registerSubmit" type="submit" class="btn btn-dark dugmeDodaj" style="margin-top:30px;">REGISTRUJ SE</button>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var roleSelect = document.querySelector('select[name="Input.Role"]');
+            if (roleSelect && !roleSelect.value) {
+                event.preventDefault();
+                document.getElementById('roleValidationMessage').style.display = 'block';
+            }
+        });
+    </script>
+}

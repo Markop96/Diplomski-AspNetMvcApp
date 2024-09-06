@@ -1,0 +1,98 @@
+﻿@page
+@model LoginModel
+<link rel="stylesheet" href="~/css/Role.css" />
+<style>
+ .footer {
+        position: relative;
+    }
+
+    .link3 {
+        text-decoration: none;
+        color: white;
+        font-weight: 900;
+        padding: 5px;
+    }
+
+        .link3:hover {
+            color: yellowgreen;
+            ;
+        }
+
+    .naslov {
+        padding-bottom: 30px;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+    }
+    .uvod {
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 28.5px;
+        font-weight: bolder;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: grey;
+    }
+
+    .texxt {
+        color: deeppink;
+        font-weight: 900;
+    }
+
+    .texxxt {
+        font-size:20px;
+        color: deeppink;
+        font-weight: 900;
+    }
+
+    .texxxt:hover{
+        color: greenyellow;
+    }
+
+    .bg {
+        background-color: rgba(209, 247, 148, 0.5)
+    }
+
+    .dugmeDodaj {
+        margin-bottom: 50px;
+    }
+</style>
+
+    <div class="col-md-4 mx-auto" style="width:700px;">
+        <section>
+            <form id="account" method="post">
+            <h1 class="naslov" style="margin-top:80px;">PRIJAVA</h1>
+                <h2 class="uvod">Prijavite se na svoj profil</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control bg" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="texxt">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control bg" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="texxt">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="texxt">
+                        <input class="form-check-input bg" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div style="text-align:center">
+                <button id="login-submit" type="submit" class="btn btn-dark dugmeDodaj" style="margin-top:30px;">PRIJAVI SE</button>
+                </div>
+                <div style="text-align:center">
+                    <p style="margin-bottom:60px">
+                        <a class="texxxt" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registruj se kao novi korisnik</a>
+                    </p>
+
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<M_RENT_Aplikacija.Models.ViewModels.UserRolesViewModel>
+<link rel="stylesheet" href="~/css/Role.css" />
+<link rel="stylesheet" href="~/css/StyleSheet1.css" />
+
+<style>
+    td, th {
+        border: 20px white solid;
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+
+    th, td {
+        width: 300px;
+    }
+
+    thead {
+        background: linear-gradient(to right, green, greenyellow, green);
+    }
+
+    tbody tr {
+        background: linear-gradient(to right, black, deeppink, black);
+    }
+
+    th {
+        font-size: 30px;
+    }
+    .inputKlasa{
+        width:25%;
+        margin-bottom: 0px;
+        height: 43px;
+        padding-bottom:0px;
+        border-radius:0px;
+        background: linear-gradient(to right,black,green);
+        border:none;
+        color:black !important;
+        font-weight:700;
+    }
+    .dugme1{
+        border: none;
+        background-color: forestgreen;
+        padding: 9px;
+        max-height: 43px;
+        color:greenyellow;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "User Roles";
+}
+
+<h1 class="naslov1">KORISNICI</h1>
+
+<div style="text-align:center; margin:20px 0 40px 0">
+    <partial name="AdminAddUsers" />
+</div>
+
+<div style="margin:20px 0 5px 0;">
+    <form method="get" action="@Url.Action("SearchByName")" style="display:inline; margin-right:16.5px;margin-left:20px;">
+        <input type="text" name="searchName" value="@ViewData["SearchName"]" class="inputKlasa" style="width:25.5%"/>
+        <button type="submit" class="dugme1">Pretraži</button>
+    </form>
+
+    <form method="get" action="@Url.Action("SearchByPhone")" style="display:inline; margin-right:20.5px">
+        <input type="text" name="searchPhone" value="@ViewData["SearchPhone"]" class="inputKlasa" style=" background: linear-gradient(to right,green,green);" />
+
+        <button type="submit" class="dugme1">Pretraži</button>
+    </form>
+
+    <form method="get" action="@Url.Action("SearchByRole")" style="display:inline;margin-right:0px">
+        <input type="text" name="searchRole" value="@ViewData["SearchRole"]" class="inputKlasa" style=" background: linear-gradient(to right,green,black);" />
+        <button type="submit" class="dugme1" style="background-color:black">Pretraži</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>E-mail:</th>
+            <th>Telefon:</th>
+            <th>Uloga:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userRole in Model)
+        {
+            <tr>
+                <td>@userRole.UserName</td>
+                <td>@userRole.PhoneNumber</td>
+                <td>
+                    @string.Join(", ", userRole.Roles)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+

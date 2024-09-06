@@ -1,0 +1,243 @@
+﻿@model List<M_RENT_Aplikacija.Models.ViewModels.Automobil>
+
+<link rel="stylesheet" href="~/css/Role.css" />
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 50, 0, 0.85);
+    }
+
+    .modal-content {
+        background-color: rgba(0, 50, 0, 0);
+        position: relative;
+        margin: 20% auto;
+        padding: 100px;
+        width: 55%;
+        text-align: center;
+        border: none;
+    }
+
+    .forma {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+        z-index: -1;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .slikaS {
+        width: 45px;
+        height: 40px;
+        border: none;
+    }
+
+    #searchInput {
+        width: 500px;
+        height: 50px;
+        box-shadow: none;
+    }
+
+    .modal p {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+        font-weight: 900;
+        font-size: 45px;
+    }
+
+    .modal button {
+        border: none;
+        border-radius: 10% / 50%;
+        width: 10%;
+        padding: 10px;
+        margin: 1% 5%;
+        color: white;
+        font-weight: 900;
+    }
+
+        .modal button:hover {
+            color: black;
+            transform: scale(1.3);
+            text-shadow: none !important;
+        }
+
+    .akcije {
+        width: 100px !important;
+        text-align: center;
+    }
+
+    .inactive {
+        color: red;
+    }
+</style>
+
+<h1 class="naslov">Lista dostupnih automobila</h1>
+<ul class="lli" style="padding-bottom:50px;">
+    <li>
+        Ovaj deo sistema je namenjen našim zaposlenima, kao i administratorima, omogućavajući im potpunu kontrolu nad bazom podataka automobila.
+        Imajući u vidu ovu funkcionalnost, kako zaposleni tako i administratori mogu pregledati, dodavati i brisati postojeće automobile iz baze podataka.
+    </li>
+    <li>
+        Naglašavamo važnost vođenja računa o stanju vozila i njihovoj dostupnosti u tabeli, jer će svi automobili, uključujući one koji su već iznajmljeni,
+        biti dostupni za rezervaciju. Ovo osigurava da naša flota automobila uvek bude ažurna i da naši korisnici imaju pristup vozilima po njihovim potrebama.
+    </li>
+    <li>
+        Vaš doprinos održavanju tačnosti podataka u sistemu je od suštinskog značaja kako bismo mogli efikasno upravljati našom flotom vozila i pružiti
+        visokokvalitetnu uslugu našim korisnicima.
+    </li>
+</ul>
+
+<div class="container py-" style="text-align:center">
+    <form id="carSearchForm" method="get" action="/Car/Search">
+        <div class="mb-3">
+            <input type="text" class="inputKlasa" id="searchInput" name="searchQuery" placeholder="Pretraži na osnovu naziva" />
+            <button type="submit" style="border:none;background-color:transparent"><img src="~/Slike/search.png" alt="Alternate Text" class="slikaS" /></button>
+        </div>
+    </form>
+</div>
+
+<div style="text-align:end">
+    <select id="sortOptions" style="background-color: rgba(209, 247, 148, 0.5); width:200px; border:none">
+        <option value="">SORTIRANJE</option>
+        <option value="@Url.Action("SortByPrice", "Car", new { sortOrder = "price_asc" })">CENA - OPADAJUĆE</option>
+        <option value="@Url.Action("SortByPrice", "Car", new { sortOrder = "price_desc" })">CENA - RASTUĆE</option>
+        <option value="@Url.Action("SortByName", "Car", new { sortOrder = ViewData["NameSortParam"] })">NAZIV (ABCEDNIM REDOM)</option>
+    </select>
+</div>
+
+<table class="table" style="text-align:center">
+    <thead style="background: linear-gradient(to right, white,rgba(209, 247, 148, 0.5))">
+        <tr>
+            <th style="text-align:start">NAZIV</th>
+            <th>CENA</th>
+            <th colspan="2" style="text-align:center;">UREDI/OBRIŠI</th>
+            <th>DOSTUPNOST</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var automobil in Model)
+        {
+            <tr id="row-@automobil.Id" class="car-row" data-id="@automobil.Id" data-is-active="@automobil.IsActive">
+                <td style="text-align:start">@automobil.Name</td>
+                <td><b style="color:forestgreen">@automobil.Price</b> euro/dan</td>
+                <td class="akcije">
+                    <a asp-action="Edit" asp-route-id="@automobil.Id"><img src="~/Slike/edit.png" alt="Izmeni" style="width:30px;"></a>
+                </td>
+                <td class="akcije">
+                    <button onclick="deleteCar(@automobil.Id)" style="background-color:transparent; border:none"><img src="~/Slike/delete.png" alt="Obriši" style="width:30px;" /></button>
+                </td>
+                <td class="akcije">
+                    <button onclick="toggleCar(@automobil.Id)" style="background-color:transparent; border:none">
+                        <img src="~/Slike/@(automobil.IsActive ? "hide.png" : "unhide.png")" class="toggle-icon" style="width:30px;" />
+                    </button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <img src="~/Slike/forma.png" class="forma">
+        <span class="close">&times;</span>
+        <p>DA LI STE SIGURNI DA ŽELITE DA UKLONITE OVAJ AUTOMOBIL SA LISTE?</p>
+        <p style="font-size:12px; color:lightgray">(Klikom na dugme "Da" automobil će biti trajno obrisan iz evidencije)</p>
+        <div>
+            <button id="confirmBtn" style="background-color:lawngreen; text-shadow: 0 0 10px black">Da</button>
+            <button id="cancelBtn" style="background-color:red ;text-shadow: 0 0 10px black;">Ne</button>
+        </div>
+    </div>
+</div>
+
+<div class="kreirajNovi">
+    <button><a asp-controller="Car" asp-action="Add">Dodaj automobil</a></button>
+</div>
+
+@section scripts {
+    <script>
+        let carIdToDelete = null;
+
+        function deleteCar(carId) {
+            carIdToDelete = carId;
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const sortOptions = document.getElementById('sortOptions');
+
+            sortOptions.addEventListener('change', function () {
+                const selectedOption = sortOptions.options[sortOptions.selectedIndex].value;
+                if (selectedOption) {
+                    window.location.href = selectedOption;
+                }
+            });
+
+            const modal = document.getElementById('confirmModal');
+            const closeBtn = document.getElementsByClassName('close')[0];
+            const confirmBtn = document.getElementById('confirmBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+
+            closeBtn.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            cancelBtn.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            confirmBtn.onclick = function () {
+                fetch(`/Car/Delete/${carIdToDelete}`, {
+                    method: 'POST'
+                }).then(response => {
+                    if (response.ok) {
+                        document.getElementById(`row-${carIdToDelete}`).remove();
+                        modal.style.display = 'none';
+                    }
+                }).catch(err => {
+                    console.error('Error:', err);
+                });
+            }
+        });
+        function toggleCar(carId) {
+            fetch(`/Car/ToggleStatus/${carId}`, {
+                method: 'POST'
+            }).then(response => {
+                if (response.ok) {
+                    setTimeout(() => {
+                        location.reload();
+                    }, 100);
+                }
+            }).catch(err => {
+                console.error('Error:', err);
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M-RENT</title>
+    <link rel="shortcut icon" href="~/Slike/ikonica.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/M_RENT_Aplikacija.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            position: relative;
+            top: 280px;
+            max-width:100%;
+            background-size: 100%;
+            background-attachment: fixed;
+            background-image: url(https://imagizer.imageshack.com/img922/138/onBjwO.png);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-nav .nav-link {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: larger;
+            font-weight: 900;
+            color: greenyellow !important;
+            position: relative;
+            top: 65px;
+            right: 20px;
+            text-shadow: 9px 9px 10px black, 1em 1em 1em black, 3em 2em 2em black;
+        }
+
+        .nav-link:hover {
+            color: rgb(250, 5, 132) !important;
+            transform:scale(1.15);
+            text-shadow: 5px 5px 5px blue, 0em 2em 1em deeppink, 2em 1em 5em blue;
+            z-index: 1000;
+        }
+        .nav-item{
+            display:grid;
+            padding-left:30px;
+        }
+
+        .content {
+            min-height: calc(100% - 50px); 
+        }
+
+        .footer {
+            background-color: rgb(22 106 3 / 0.95);
+            color: white !important;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .socialmedia{
+        position:relative;
+        }
+
+        .socialmedia img{
+        
+            width:50px;
+
+        }
+        h5{
+            font-size: 17px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight:900;
+            padding-right:70px;
+            text-align:center;
+        }
+
+        .kolona {
+            display:flex;
+            flex: 1;
+            padding: 70px;
+            margin: 0 10px;
+        }
+        .a a{
+            font-size:15px;
+            color:lightgreen;
+            text-decoration:none;
+        }
+        .a a:hover{
+            color:deeppink;
+            text-decoration: underline;
+            }
+
+
+        .LogoMRENT{
+            width: auto;
+            display: inline-block;
+            position: relative;
+            height: 190px;
+            top: 10px;
+            left: 30px;
+            filter: drop-shadow(-25px -25px 4px darkgreen);
+        }
+
+        .navbar-collapse.show {
+            padding-bottom:100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color:rgb(22 106 3 / 0.98); padding-left:10px;">
+    
+            <div class="container-fluid">
+                <a class="navbar-brand extended" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/slike/logo.png" alt="LOGO" class="LogoMRENT"> </a>
+                <button class="navbar-toggler navbar-collapse.show" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="color:deeppink">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" style="padding-left:30px;">
+
+                        @if (!User.IsInRole("Admin") && !User.IsInRole("Zaposleni"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">POČETNA</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">O NAMA</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">PRIVATNOST</a> 
+                            </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Zaposleni"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">PONUDA</a>
+                            </li>
+                        }
+                        @if (!User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Ponuda">KALKULATOR</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Review" asp-action="Index">RECENZIJE</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Zaposleni"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="Index">REZERVACIJE</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserRoles" asp-action="Index">KORISNICI</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin") && !User.IsInRole("Zaposleni"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="MyReservations">REZERVACIJE</a>
+                            </li>
+                        }
+                    </ul>
+                    <div>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted futer">
+       
+        <div class="socialmedia kolona" style="display: flex; justify-content: center;">
+            
+
+            <span style="margin-right:30px ;padding-right:10px;">
+                <h5>KONTAKT</h5>
+                <a href="tel:+381631628581" style="color:lightgreen; text-decoration:none">POZOVITE NAS</a><br>
+                <a href="mailto:markop1609@gmail.com" style="color:lightgreen; text-decoration:none">POŠALJITE NAM MEJL</a>
+            </span>
+            
+            <span style="margin-right: 30px;">
+                <h5>DRUŠTVENE MREŽE</h5>
+                <a href="https://www.instagram.com/markop166?igsh=MXN0bWhmM29henowOA%3D%3D&utm_source=qr"><img src="~/Slike/instagram.png" /></a>
+                <a href="https://www.facebook.com/profile.php?id=100077035208094&locale=sr_RS"><img src="~/Slike/facebook.png" style="width:65px;" /></a>
+                <a> <img src="~/Slike/tiktok.png" style="width:55px;" /></a>
+            </span>
+
+            <span class="a" style="padding-right:50px;">
+                <h5>OPCIJE</h5>
+                
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">POČETNA</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="About">O NAMA</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy">PRIVATNOST</a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Roles" asp-action="Index">ULOGE</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Zaposleni"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Car" asp-action="Index">PONUDA</a>
+                        </li>
+                    }
+
+                     @if (User.Identity.IsAuthenticated && User.IsInRole("Korisnik") || User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Car" asp-action="Ponuda">REZERVACIJA</a>
+                        </li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Korisnik"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Review" asp-action="Create">DODAJ RECENZIJU</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Review" asp-action="Index">RECENZIJE</a>
+                        </li>
+                    }
+                    
+                    </ol>
+            </span>
+            <span>
+                <img src="~/Slike/enjoy.gif" style="width:110px;">
+            </span>
+        </div> 
+        <div style="padding-bottom:10px !important; text-align:center">
+            &copy; 2024  M-RENT
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

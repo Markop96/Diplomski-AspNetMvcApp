@@ -1,0 +1,60 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Postavke mejla:";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/Role.css" />
+<style>
+
+    h3 {
+        font-size: 45px;
+        color: black;
+        font-weight: 900;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-shadow: 3px 0 rgb(182 255 0);
+        padding-left: 65px;
+        text-transform:uppercase;
+    }
+</style>
+
+<div style="padding-left:270px; padding-bottom:40px;">
+    <img style="width:100px;" src="~/Slike/mejl.png" />
+</div>
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row" style="text-align:end; padding-left:65px;">
+    <div class="col-md-6" style="color:deeppink">
+        <form id="email-form" method="post">
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            @if (Model.IsEmailConfirmed)
+            {
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" class="form-control" placeholder="Unesite trenutni email adresu" disabled style="background-color:rgb(209, 247, 148) ; width:500px;" />
+                    <label asp-for="Email" class="form-label bg" style="color:deeppink; font-weight:900;"></label>
+                </div>
+            }
+            else
+            {
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" class="form-control bg" placeholder="Verifikacija email adrese" disabled style="background-color:rgb(209, 247, 148) ; width:500px;" />
+                    <label asp-for="Email" class="form-label bg" style="font-weight:900;">Verifikuj email</label>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                </div>
+            }
+            <div class="form-floating mb-3">
+                <input asp-for="Input.NewEmail" class="form-control bg " autocomplete="email" aria-required="true" placeholder="Unesite novu email adresu." style="width:500px"/>
+                <label asp-for="Input.NewEmail" class="form-label" style="color:deeppink ;font-weight:900;">Novi email</label>
+                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            </div>
+            <div style="text-align:center; padding-left:70px;">
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-dark dugmeDodaj" style="margin-top:15px;background-color:deeppink; border:none;width:150px;">Sačuvaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

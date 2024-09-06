@@ -1,0 +1,52 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+::-webkit-scrollbar {
+    display: none; /* Skrivanje skrol bara */
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    zoom:0.69;
+
+}
+.footer {
+    margin-top:50px;
+}
+
+.texxt {
+    color: deeppink;
+    font-weight: 900;
+}
+
+.texxxt {
+    font-size: 20px;
+    color: deeppink;
+    font-weight: 900;
+}
+
+    .texxxt:hover {
+        color: greenyellow;
+    }
+
+.bg {
+    background-color: rgba(209, 247, 148, 0.5)
+}
+
+.dugmeDodaj {
+    margin-bottom: 50px;
+}

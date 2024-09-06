@@ -1,0 +1,156 @@
+﻿@model M_RENT_Aplikacija.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit Reservation";
+    var cars = ViewData["Cars"] as SelectList;
+}
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+<h1 class="naslov">IZMENI REZERVACIJU</h1>
+
+<div class="style1">
+    @using (Html.BeginForm("Edit", "Reservations", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.Label("IdCar", "Automobili:", htmlAttributes: new { @class = "control-label label" })
+
+            <div class="col-md-10">
+                @Html.DropDownList("IdCar", (SelectList)ViewData["Cars"], "Select Car", new { @class = "form-control edit1 polje" })
+                @Html.ValidationMessageFor(model => model.IdCar, "", new { @class = "text-danger edit1 polje" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="carPrice" class="control-label label">Cena po danu:</label>
+            <div class="col-md-10">
+                <input type="text" id="carPrice" class="form-control poljeCena" readonly />
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label asp-for="DateStart" class="control-label label">Datum početka</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateStart, new { htmlAttributes = new { @class = "form-control  date-picker polje" } })
+                    @Html.ValidationMessageFor(model => model.DateStart, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateEnd" class="control-label label">Datum završetka</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateEnd, new { htmlAttributes = new { @class = "form-control  date-picker polje" } })
+                    @Html.ValidationMessageFor(model => model.DateEnd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="totalPrice" class="control-label label">Ukupna cena:</label>
+                <div class="col-md-10">
+                    <input type="text" id="totalPrice" class="form-control poljeCena" readonly />
+                </div>
+            </div>
+
+            <div style="text-align:center">
+                <label class="control-label label">Status plačanja:</label>
+                <p style="color:grey;font-size:20px; font-weight:900; padding-bottom:0px; margin-bottom:0px;">(čekirano=plaćeno)</p>
+                <p style="color:grey;font-size:20px; font-weight:900; margin-bottom:30px">(onemoguceno čekiranje=plaćeno online)</p>
+
+                <div class="form-check" style="text-align:center;">
+                    <div style="display: inline-block; text-align: center;">
+                        @if (ViewData["HasPayments"] != null && (bool)ViewData["HasPayments"])
+                        {
+                            @Html.CheckBoxFor(model => model.IsPaid, new { @class = "form-check-input cb", style = "width: 80px; height: 80px;", @disabled = "disabled" })
+                        }
+                        else
+                        {
+                            @Html.CheckBoxFor(model => model.IsPaid, new { @class = "form-check-input cb", style = "width: 80px; height: 80px;" })
+                        }
+                    </div>
+                    <div style="margin-right:25px;">
+                        @if (ViewData["HasPayments"] != null && (bool)ViewData["HasPayments"])
+                        {
+
+                            <p>Online plaćeno</p>
+                        }
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.IsPaid, "", new { @class = "text-danger" })
+            </div>
+
+
+
+            <div class="form-group style1" style="margin-top:100px;margin-bottom:100px; text-align:center">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="Save" style="background-color:transparent; border:none; padding-right:250px">
+                        <img src="~/Slike/save.svg.png" alt="Save" style="width:80px;" />
+                    </button>
+                    <a href="@Url.Action("Index")" style="background-color:transparent; border:none;">
+                        <img src="~/Slike/Cars/cancel.svg.png" style="width:80px;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function calculateTotalPrice() {
+                var carPrice = parseFloat($("#carPrice").val());
+                var dateStart = new Date($("#DateStart").val());
+                var dateEnd = new Date($("#DateEnd").val());
+                if (!isNaN(carPrice) && !isNaN(dateStart) && !isNaN(dateEnd) && dateStart <= dateEnd) {
+                    var numberOfDays = ((dateEnd - dateStart) / (1000 * 60 * 60 * 24)) + 1;
+                    var totalPrice = carPrice * numberOfDays;
+                    $("#totalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#totalPrice").val("");
+                }
+            }
+
+            $("#IdCar").change(function () {
+                var selectedCarId = $(this).val();
+                if (selectedCarId !== "") {
+                    getCarPrice(selectedCarId);
+                } else {
+                    $("#carPrice").val("");
+                    calculateTotalPrice();
+                }
+            });
+
+            $("#DateStart, #DateEnd").change(function () {
+                calculateTotalPrice();
+            });
+
+            function getCarPrice(carId) {
+                $.ajax({
+                    async: true,
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { id: carId },
+                    url: '@Url.Action("GetPriceById", "Reservations")',
+                    success: function (data) {
+                        $("#carPrice").val(data.toFixed(2));
+                        calculateTotalPrice();
+                    },
+                    error: function () {
+                        alert("There was an error while getting the price.");
+                    }
+                });
+            }
+
+            // Set initial values if editing an existing reservation
+            var initialCarId = $("#IdCar").val();
+            if (initialCarId) {
+                getCarPrice(initialCarId);
+            }
+        });
+    </script>
+}

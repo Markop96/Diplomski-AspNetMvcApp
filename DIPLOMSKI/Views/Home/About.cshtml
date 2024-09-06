@@ -1,0 +1,124 @@
+﻿@{
+}
+<script>
+    function toggleText(elementId) {
+        var textElement = document.getElementById(elementId + '-text');
+        if (textElement.style.display === 'none' || textElement.style.display === '') {
+            textElement.style.display = 'block';
+        } else {
+            textElement.style.display = 'none';
+        }
+    }
+</script>
+
+<style>
+
+    body {
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚗</text></svg>") 16 0,auto;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 38px;
+        font-weight: 900;
+        color: #011401;
+        text-shadow: 8px 0 rgb(182 255 0);
+        padding-bottom: 10px;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+    }
+    .mv{
+        font-size: 100px;
+    }
+    .mv:hover {
+        color: greenyellow !important;
+        text-shadow: 8px 0 black;
+        z-index: 1000;
+    }
+    .mapa {
+        width: 100%;
+        padding: 15px;
+        margin-bottom:50px;
+        height: 550px;
+        background-color: deeppink;
+    }
+
+        .mapa:hover {
+            background-color: greenyellow;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚙</text></svg>") 16 0,auto;
+        }
+
+    .footer {
+        position: relative;
+    }
+
+    .vizmis {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+        text-align: justify;
+        padding-bottom: 30px;
+        padding-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .pointer {
+        padding-top:70px;
+        text-align: center;
+    }
+
+    .pointer img {
+            width: 160px;
+            padding-bottom: 20px;
+        }
+    .a1 {
+        color:dimgrey;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='30' height='38' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>📧</text></svg>") 16 0,auto;
+        font-size:50px;
+        text-decoration: underline;
+    }
+
+    .a2 {
+        color: dimgrey;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='30' height='38' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>📞</text></svg>") 16 0,auto;
+        font-size: 50px;
+        text-decoration: underline;
+    }
+
+    a:hover{
+    color:deeppink;
+    }
+
+</style>
+<body>
+
+    <h2 class="mv" onclick="toggleText('vizija')">VIZIJA</h2>
+    <p id="vizija-text" class="vizmis" style="display: none;">
+        Postati prepoznatljiva marka koja pruža vrhunsku uslugu iznajmljivanja vozila u Loznici i okolini, postavljajući standarde kvaliteta i pouzdanosti u industriji.
+        Težimo biti prvi izbor za svakog putnika, pružajući im ne samo vozila visoke kvalitete, već i nezaboravno iskustvo koje nadmašuje njihova očekivanja.
+    </p>
+
+    <h2 class="mv" onclick="toggleText('misija')">MISIJA</h2>
+    <p id="misija-text" class="vizmis" style="display: none;">
+        Naša misija je osigurati da svaki korisnik M-Rent-a doživi udobno, sigurno i bezbrižno putovanje. Kroz pažljivo održavanu flotu vozila i posvećenost
+        vrhunskoj usluzi, želimo olakšati svakodnevna putovanja naših klijenata. Nastojimo ostvariti dugoročne odnose s našim korisnicima pružajući im povjerenje,
+        sigurnost i praktičnost. Svojom stručnošću, pouzdanošću i posvećenošću kvalitetu, gradimo mostove povjerenja s našim klijentima i zajednicom.
+    </p>
+
+    <div class="pointer"><img src="~/Slike/pointer.gif" /></div>
+
+    <h2 style="padding-bottom:40px;">M-RENT agencija smeštena je u Loznici, na adresi Vuka Karadžića 33</h2>
+
+    <div class="mape">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2069.599506785616!2d19.225616331766993!3d44.52816239025254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ssr!2srs!4v1708690867612!5m2!1ssr!2srs" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mapa"></iframe>
+    </div>
+
+    <div style="padding-bottom:50px;padding-top:50px;">
+        <p class="vizmis" style="text-align:center; color:dimgrey">
+            Kontaktirajte nas putem mejla ili pozivom na broj telefona <br />
+            <a href="mailto:markop1609@gmail.com" class="a1">markop1609@gmail.com </a><br />
+            <a href="tel:+381 63 1628581" class="a2">+381 63 1628581</a>
+        </>
+    </div>
+</body>
+

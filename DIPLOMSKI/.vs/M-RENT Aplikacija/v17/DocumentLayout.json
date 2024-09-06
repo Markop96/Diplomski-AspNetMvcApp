@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\userroles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\userroles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\shared\\adminaddusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\shared\\adminaddusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\review\\tabelarecenzija.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\review\\tabelarecenzija.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\review\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\review\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\review\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\review\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\views\\reservations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:views\\reservations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|c:\\users\\pc\\source\\repos\\diplomski\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB97A6F2-618A-4735-B4A6-AF09491D09ED}|M-RENT Aplikacija.csproj|solutionrelative:controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 198,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\UserRoles\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\UserRoles\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\UserRoles\\Index.cshtml",
+              "RelativeToolTip": "Views\\UserRoles\\Index.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAD4AAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:22:21.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Roles\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Create.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Roles\\Create.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:22:13.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Roles\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Roles\\Index.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Index.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:22:10.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminAddUsers.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Shared\\AdminAddUsers.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\AdminAddUsers.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Shared\\AdminAddUsers.cshtml",
+              "RelativeToolTip": "Views\\Shared\\AdminAddUsers.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:21:35.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Car\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Car\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Car\\Index.cshtml",
+              "RelativeToolTip": "Views\\Car\\Index.cshtml",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAAAIoAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T12:42:42.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CarController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\CarController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CarController.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\CarController.cs",
+              "RelativeToolTip": "Controllers\\CarController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T20:42:12.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TabelaRecenzija.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\TabelaRecenzija.cshtml",
+              "RelativeDocumentMoniker": "Views\\Review\\TabelaRecenzija.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\TabelaRecenzija.cshtml",
+              "RelativeToolTip": "Views\\Review\\TabelaRecenzija.cshtml",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAmwJEAAADYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T20:08:55.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RecenzijaController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\RecenzijaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecenzijaController.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\RecenzijaController.cs",
+              "RelativeToolTip": "Controllers\\RecenzijaController.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAowAwAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T19:40:31.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Review\\Create.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\Create.cshtml",
+              "RelativeToolTip": "Views\\Review\\Create.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAADwvykAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T19:39:16.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Review\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Review\\Index.cshtml",
+              "RelativeToolTip": "Views\\Review\\Index.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T19:39:04.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Reservations\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reservations\\Details.cshtml",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Views\\Reservations\\Details.cshtml",
+              "RelativeToolTip": "Views\\Reservations\\Details.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAADwv1AAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T18:15:41.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\DIPLOMSKI\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "Controllers\\ReservationController.cs",
+              "ViewState": "AQIAACUBAAAAAAAAAAAmwFkBAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T18:02:50.16Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

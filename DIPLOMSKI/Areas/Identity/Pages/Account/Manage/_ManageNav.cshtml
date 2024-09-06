@@ -1,0 +1,41 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<style>
+
+    .nav-link1{
+    font-weight:900;
+    color:black;
+    font-size:24px;
+    padding:5px;
+    text-decoration:none;
+    }
+
+    .nav-link1:hover {
+        color: rgb(250, 5, 132) !important;
+        transform: none;
+        text-shadow: none;
+        z-index: 1000;
+        font-weight: 900;
+    }
+
+    .nav-link1.active{
+        background-color:greenyellow;
+        width:250px;
+        border-radius:5px;
+        color:white;
+    }
+
+</style>
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link1 @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profil</a></li>
+    <li class="nav-item"><a class="nav-link1 @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link1 @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Lozinka</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+</ul>

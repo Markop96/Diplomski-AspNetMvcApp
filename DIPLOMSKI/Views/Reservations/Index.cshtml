@@ -1,0 +1,74 @@
+﻿@model IEnumerable<M_RENT_Aplikacija.Models.Reservation>
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="naslov1">REZERVACIJE:</h1>
+
+<p style="text-align:center; padding-bottom:15px;">
+    <a asp-action="Create"><img src="~/Slike/dugme.png" class="dodajRezervaciju"/></a>
+</p>
+
+<div  style="text-align:center">
+<form asp-action="Search" method="get">
+        <input class="inputKlasa" type="search" id="searchInput" name="searchQuery" placeholder="Pretraži po nazivu korinsika" aria-label="Search">
+        <button type="submit" style="border:none;background-color:transparent"><img src="~/Slike/search.png" alt="Alternate Text" style="width:40px;" /></button>
+    </form>
+</div>
+<table class="table" style="margin-bottom:200px;">
+    <thead>
+        <tr>
+            <th>
+                Korisnik
+            </th>
+            <th>
+                Automobil
+            </th>
+            <th>
+                Datum početka
+            </th>
+            <th>
+                Datum završetka
+            </th>
+            <th>
+                Broj dana
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+              
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color:black; ">
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfDays) dana
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullPrice) eura
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn upravljajDugme">UPRAVLJAJ</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,128 @@
+﻿@model M_RENT_Aplikacija.Models.Reservation
+@{
+    ViewData["Title"] = "Plaćanje";
+}
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+<style>
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .payment-info {
+        margin-bottom: 20px;
+    }
+
+        .payment-info label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 30px;
+            
+        }
+
+        .payment-info div {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+    .button12 {
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-weight:900;
+        font-size:40px !important;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+        width:100%;
+    }
+
+        .button12:hover {
+            background: linear-gradient(to left, black, deeppink, black);
+        }
+
+    #card-element {
+        border: 5px solid green;
+        border-radius: 4px;
+        padding: 20px;
+        margin-top: 40px;
+        transition: box-shadow 0.3s ease-in-out;
+        background-color: rgba(162, 255, 0, 0.6);    
+    }
+
+    .card-errors {
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+</style>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<h1 class="naslov" style="text-align:start; font-size:100px; padding-bottom:20px;">Plaćanje:</h1>
+
+<form id="payment-form" method="post" asp-action="Pay" asp-route-id="@Model.Id">
+    <div style="border-top:solid green 5px;border-left:solid green 5px; padding:30px;background: linear-gradient(to bottom right,greenyellow, greenyellow 5%,white, white);">
+    <div class="payment-info">
+        <label>Rezervacija za automobil: @Model.Car.Name</label>
+    </div>
+    <div class="payment-info">
+        <label>Cena: @Model.FullPrice eura</label>
+    </div>
+    <div class="payment-info">
+        <label>Datum početka: @Model.DateStart.ToString("dd.MM.yyyy")</label>
+    </div>
+    <div class="payment-info">
+        <label>Datum završetka: @Model.DateEnd.ToString("dd.MM.yyyy")</label>
+    </div>
+    </div>
+    <div id="card-element">
+    </div>
+    <div class="card-errors" role="alert"></div>
+    <div style="text-align:center">
+        <button type="submit" class="button12">Platite</button>
+    </div>
+    <div style="text-align:center; font-size:18px; font-weight:700; color:grey">
+        * Molimo Vas da unapred proverite sve informacije vezane za Vašu rezervaciju, to ujedno predstavlja i najbolji vid prevencije nastanka grešaka! *
+    </div>
+</form>
+
+<script>
+    var stripe = Stripe('@ViewBag.PublishableKey');
+    var elements = stripe.elements();
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    var cardErrors = document.querySelector('.card-errors');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+
+                cardErrors.textContent = result.error.message;
+            } else {
+
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', result.token.id);
+                form.appendChild(hiddenInput);
+                form.submit();
+            }
+        });
+    });
+</script>

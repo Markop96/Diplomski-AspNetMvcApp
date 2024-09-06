@@ -1,0 +1,54 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "POTVRDI REGISTRACIJU";
+}
+<link rel="stylesheet" href="~/css/Role.css" />
+<style>
+    .link3{
+    text-decoration:none;
+    color:white;
+    font-weight:900;
+    padding:5px;
+    }
+
+    .link3:hover{
+            color: yellowgreen;
+            ;
+    
+    }
+    
+    .footer{
+    position:fixed;
+    
+    }
+
+    .uvod {
+
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 24px;
+        font-weight: bolder;
+        color: grey;
+    }
+</style>
+
+
+<h1 class="naslov" style="margin-top:150px; padding-bottom:0px !important;">@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p style="text-align:center; padding-bottom:120px;" class="uvod">
+            Za konačnu potvrdu registracije, molimo Vas da pritisnete dugme. <br />
+            <br />
+            <button class="dugmeDodaj" style="margin-top50px;"> <a class="link3" href="@Model.EmailConfirmationUrl">POTVRDI!</a></button>
+</p>
+    }
+    else
+    {
+<p>
+        Please check your email to confirm your account.
+</p>
+    }
+}
+

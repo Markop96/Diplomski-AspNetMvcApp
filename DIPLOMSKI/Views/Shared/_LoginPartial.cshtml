@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<style>
+    .footer{
+        position:relative;
+    }
+
+</style>
+
+<ul class="navbar-nav flex-grow-1" style="padding-left:30px">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">PROFIL</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">ODJAVA</button>
+        </form>
+    </li>
+}
+    else
+    {
+        <li class="nav-item ">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">REGISTRACIJA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">PRIJAVA</a>
+        </li>
+    }
+</ul>

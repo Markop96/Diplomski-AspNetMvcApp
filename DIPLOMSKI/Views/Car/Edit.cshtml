@@ -1,0 +1,32 @@
+﻿@model M_RENT_Aplikacija.Models.ViewModels.Automobil
+
+<link rel="stylesheet" href="~/css/Role.css" />
+<link rel="stylesheet" href="~/css/StyleSheet1.css" />
+
+<h1 class="naslov">IZMENI PODATKE O AUTOMOBILU</h1>
+
+<div class="style1">
+<form asp-action="Edit" >
+    <div class="form-group">
+        <label asp-for="Name" class="control-label label">Naziv:</label>
+            <input asp-for="Name" class="form-control edit1 polje" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label label">Cena:</label>
+            <input asp-for="Price" class="form-control edit1 polje" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top:100px;">
+        <input type="hidden" asp-for="Id" />
+            <button type="submit" style="background-color:transparent; border:none; padding-right:250px"><img src="~/Slike/save.svg.png" alt="Save" style="width:80px;" /></button>
+            <a asp-action="Index" style="background-color:transparent; border:none;"><img src="~/Slike/Cars/cancel.svg.png" style="width:80px;" /></a>
+    </div>
+</form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

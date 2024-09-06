@@ -1,0 +1,122 @@
+﻿@model M_RENT_Aplikacija.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create Reservation";
+    var cars = ViewData["Cars"] as SelectList;
+}
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+<h1 class="naslov">DODAJ REZERVACIJU</h1>
+
+<div class="style1">
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="IdCar" class="control-label" style="font-size:30px; font-weight:900">Dostupni automobili:</label>
+        <p style="font-weight:100; font-size:20px; color:gray;"> <i>(klikom na polje izlistaće se svi dostupni automobili)</i></p>
+            <select asp-for="IdCar" class="form-control polje" id="carSelect" style="background-color:rgb(209, 247, 148); font-size:24px;">
+                <option value="">🚘 Izaberite automobil</option>
+                @foreach (var item in (SelectList)ViewData["Cars"])
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+            <span asp-validation-for="IdCar" class="text-danger"></span>
+
+
+        <span asp-validation-for="IdCar" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+            <label for="carPrice" class="label">Cena po danu:</label>
+        <input type="text" id="carPrice" class="form-control poljeCena" readonly />
+    </div>
+
+
+    <div class="form-group">
+            <label asp-for="DateStart" class="control-label label">Datum početka</label>
+            <input asp-for="DateStart" class="form-control date-picker polje" type="date" id="dateStart" />
+        <span asp-validation-for="DateStart" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateEnd" class="control-label label">Datum završetka</label>
+        <input asp-for="DateEnd" class="form-control date-picker polje" type="date" id="dateEnd" />
+        <span asp-validation-for="DateEnd" class="text-danger"></span>
+    </div>
+
+    
+    <div class="form-group">
+            <label for="totalPrice" class="label">Ukupna cena:</label>
+        <input type="text" id="totalPrice" class="form-control poljeCena" readonly />
+    </div>
+
+    <div class="form-group">
+            <button type="submit" style="background-color:transparent;border:none; padding-top:50px;"><img src="~/Slike/dugme.png" class="dodajRezervaciju" style="width:80px;"/></button>
+    </div>
+</form>
+</div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Zaposleni"))
+{
+    <div>
+        <a asp-action="Index"><img src="~/Slike/strelica.png" alt="Povratak" class="dodajRezervaciju slikeD" style="width:80px;" /></a>
+    </div>
+}
+else
+
+{
+    <div>
+        <a asp-action="MyReservations"><img src="~/Slike/strelica.png" alt="Povratak" class="dodajRezervaciju slikeD" style="width:80px;" /></a>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function calculateTotalPrice() {
+                var carPrice = parseFloat($("#carPrice").val());
+                var dateStart = new Date($("#dateStart").val());
+                var dateEnd = new Date($("#dateEnd").val());
+                if (!isNaN(carPrice) && !isNaN(dateStart) && !isNaN(dateEnd) && dateStart <= dateEnd) {
+                    var numberOfDays = (dateEnd - dateStart) / (1000 * 60 * 60 * 24) + 1;
+                    var totalPrice = carPrice * numberOfDays;
+                    $("#totalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#totalPrice").val("");
+                }
+            }
+
+            $("#carSelect").change(function () {
+                var selectedCarId = $(this).val();
+                if (selectedCarId !== "") {
+                    GetCarPrice(selectedCarId);
+                } else {
+                    $("#carPrice").val("");
+                    calculateTotalPrice();
+                }
+            });
+
+            $("#dateStart, #dateEnd").change(function () {
+                calculateTotalPrice();
+            });
+
+            function GetCarPrice(carId) {
+                $.ajax({
+                    async: true,
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { id: carId },
+                    url: '/Reservations/GetPriceById',
+                    success: function (data) {
+                        $("#carPrice").val(data.toFixed(2));
+                        calculateTotalPrice();
+                    },
+                    error: function () {
+                        alert("There was an error while getting the price.");
+                    }
+                });
+            }
+        });
+    </script>
+
+}

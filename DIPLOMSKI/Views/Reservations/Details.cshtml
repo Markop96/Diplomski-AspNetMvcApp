@@ -1,0 +1,87 @@
+﻿@model M_RENT_Aplikacija.Models.Reservation
+
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+<style>
+   .IsPaid{
+   font-size:60px;
+   font-weight:900;
+   color:red;
+   text-align:center
+   
+   }
+</style>
+
+<h2 class="naslov1" style="font-size:60px;text-align:start;margin-top:50px; margin-bottom:30px;">Podaci o rezervaciji:</h2>
+
+<div style="font-size:23px; border-top:solid green 5px; border-bottom:solid green 5px; background: linear-gradient(to right, white,rgb(196, 255, 125), white)">
+    <dl class="row" style="padding-top:40px">
+        <dt class="col-sm-2">Automobil:</dt>
+        <dd class="col-sm-10">@Model.Car.Name</dd>
+        <dt class="col-sm-2">Korisnik:</dt>
+        <dd class="col-sm-10">@Model.User.UserName</dd>
+        <dt class="col-sm-2">Datum početka:</dt>
+        <dd class="col-sm-10">@Model.DateStart.ToShortDateString()</dd>
+        <dt class="col-sm-2">Datum završetka:</dt>
+        <dd class="col-sm-10">@Model.DateEnd.ToShortDateString()</dd>
+        <dt class="col-sm-2">Broj dana:</dt>
+        <dd class="col-sm-10">@Model.NumberOfDays dana</dd>
+        <dt class="col-sm-2">Ukupna cena:</dt>
+        <dd class="col-sm-10">@Model.FullPrice EUR</dd>
+        @if (Model.IsPaid == false)
+        {
+            <P class="IsPaid">
+                NIJE PLAĆENO
+            </P>
+        }
+        else
+        {
+            <P class="IsPaid" style="color:green">
+                 PLAĆENO
+            </P>  
+        }
+    </dl>
+</div>
+
+<p style="text-align:center; margin-top: 50px;">
+    <a asp-action="Index"><img src="~/Slike/strelica.png" alt="Povratak" class="dodajRezervaciju slikeD" /></a>
+    <a asp-action="Edit" style="padding-right:20px; padding-left:60%" asp-route-id="@Model.Id"><img src="~/Slike/edit.png" alt="Izmeni" class="dodajRezervaciju slikeD" /></a>
+    <button id="deleteButton" style="border:none;background-color:transparent;"> <img src="~/Slike/delete.png" alt="Obrisi" class="dodajRezervaciju slikeD" /></button>
+</p>
+
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Da li ste sigurni da želite da trajno obrišete ovu rezervaciju?</p>
+        <p style="font-size:25px;color:lightgray">(Klikom na dugme "DA" rezervacija će biti trajno uklonjena!)</p>
+        <form id="deleteForm" method="post" asp-action="Delete">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" id="deleteId" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger" style="background-color:lawngreen; text-shadow: 0 0 10px black">DA</button>
+            <button type="button" class="btn btn-secondary" onclick="closeModal()" style="background-color:red ; text-shadow: 0 0 10px black">NE</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#deleteButton').on('click', function () {
+                $('#deleteModal').css('display', 'block');
+            });
+
+            window.closeModal = function () {
+                $('#deleteModal').css('display', 'none');
+            }
+
+            window.onclick = function (event) {
+                if (event.target == document.getElementById('deleteModal')) {
+                    $('#deleteModal').css('display', 'none');
+                }
+            }
+        });
+    </script>
+
+}

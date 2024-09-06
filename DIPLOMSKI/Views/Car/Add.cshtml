@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Role.css" />
+    <title>Dodaj Automobil</title>
+
+    <style>
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 50, 0, 0.85);
+        }
+
+        .modal-content {
+            background-color: rgba(0, 50, 0, 0);
+            position: relative;
+            margin: 25% auto;
+            padding: 100px;
+            
+            text-align: center;
+            border: none;
+        }
+
+        .forma {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            z-index: -1;
+            width: 40%;
+        }
+
+        .message-container{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+            font-size: 35px;
+            margin-top: 16%;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="naslov" style="margin-top:70px;">DODAJ AUTOMOBIL</h1>
+
+    <div class="container py-" style="text-align:center">
+        <form id="carForm" method="post" action="/Car/Add">
+            <div class="mb-3">
+                <label class="lli">Naziv (marka i model automobila)</label> <br />
+                <input type="text" class="inputKlasa" id="name" name="Name" required maxlength="20"/>
+            </div>
+
+            <div class="mb-3">
+                <label class="lli">Cena (bez valute, podrazumeva se da je u eurima!)</label><br />
+                <input type="number" class="inputKlasa" id="price" name="Price" min="1" step="1" required max="9999" />
+            </div>
+
+            <div cite="mb-3">
+                <button type="submit" class="btn btn-dark dugmeDodaj">DODAJ</button>
+            </div>
+        </form>
+    </div>
+
+
+   
+
+    <div id="messageModal" class="modal">
+
+        <div class="modal-content">
+            <div><img src="~/Slike/circledchecked.png" class="forma"></div>
+            <div id="messageContainer" class="message-container"></div>
+        </div>
+    </div>
+
+    <span>
+        <a asp-area="" asp-controller="Car" asp-action="Index">
+            <img src="~/Slike/strelica.png" alt="Vrati se nazad" style="height:130px;" />
+        </a>
+    </span>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('carForm');
+            const messageModal = document.getElementById('messageModal');
+            const messageContainer = document.getElementById('messageContainer');
+            const closeBtn = document.getElementsByClassName('close')[0];
+            const okButton = document.getElementById('okButton');
+
+            form.addEventListener('submit', function (event) {
+                const nameInput = document.getElementById('name');
+                const priceInput = document.getElementById('price');
+
+                messageContainer.style.display = 'none';
+                messageContainer.className = 'message-container';
+
+                if (!nameInput.value || !priceInput.value || parseFloat(priceInput.value) === 0) {
+                    messageContainer.classList.add('error');
+                    messageContainer.textContent = 'Molimo vas popunite sva polja i unesite validnu cenu.';
+                    messageContainer.style.display = 'block';
+                    event.preventDefault();
+                } else {
+                    messageContainer.classList.add('success');
+                    messageContainer.textContent = `Automobil sa nazivom: ${nameInput.value}, čija je cena: ${priceInput.value} eura po danu je uspešno dodat!`;
+                    messageContainer.style.display = 'block';
+
+                    event.preventDefault();
+                    messageModal.style.display = 'block';
+                }
+            });
+
+            messageModal.onclick = function () {
+                messageModal.style.display = 'none';
+                form.submit();
+            }
+
+            window.onclick = function (event) {
+                if (event.target == messageModal) {
+                    messageModal.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

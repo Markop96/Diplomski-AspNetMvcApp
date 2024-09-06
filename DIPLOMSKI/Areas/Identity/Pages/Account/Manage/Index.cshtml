@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "PROFIL:";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<link rel="stylesheet" href="~/css/Role.css" />
+
+<style>
+
+    h3{
+        font-size:45px;
+        color:black;
+        font-weight:900;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-shadow: 3px 0 rgb(182 255 0);
+        padding-bottom:16px;
+    }
+</style>
+
+<div style="padding-left:270px; padding-bottom:40px;">
+    <img style="width:100px;" src="~/Slike/user.png"/>
+</div>
+<h3 style="padding-left:65px;">@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row" style="text-align:end; padding-left:65px;">
+    <div class="col-md-6" style="color:deeppink">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Izaberite korisničko ime." disabled style="background-color:rgb(209, 247, 148) ; width:500px;" />
+                <label asp-for="Username" class="form-label" style="color:deeppink; font-weight:900;">Korisničko ime:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control bg" placeholder="Unesite broj telefona." style="width:500px;" />
+                <label asp-for="Input.PhoneNumber" class="form-label" style="font-weight:900 ">Broj kontakt telefona</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div style="text-align:center; padding-left:70px;">
+            <button id="update-profile-button" type="submit" class="btn btn-dark dugmeDodaj" style="margin-top:15px;background-color:deeppink; border:none;width:150px;">Sačuvaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

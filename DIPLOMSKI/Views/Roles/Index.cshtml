@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<link rel="stylesheet" href="~/css/Role.css" />
+
+<h1 class="naslov">Uloge</h1>
+
+<ul style="padding-bottom:50px;" class="lli">
+    <li>
+        Isključivo administratorskim nalogom možete kreirati nove uloge koje definišu privilegije i pristupne nivoe korisnika na sajtu. Ovo omogućava prilagođavanje
+        funkcionalnosti vaše aplikacije specifičnim potrebama.
+    </li>
+    <li>
+        Bitno je naglasiti da brisanje određene uloge može potpuno onemogućiti pristup svim korisnicima koji su bili dodeljeni toj ulozi. To može zahtevati intervenciju
+        developera kako bi se ispravilo.
+    </li>
+    <li>
+        Samo osoba koja je zadužena za upravljanje sajtom (administrator) ima ovlašćenje da izvrši operaciju brisanja uloga ili bilo kakvih izmena koje bi mogle značajno
+        uticati na funkcionalnost sajta.
+    </li>
+    
+</ul>
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th>Naziv:</th>
+            <th style="text-align:center; width:10px;">Brisanje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td id="dugme">
+                    <form asp-controller="Roles" asp-action="Delete" method="post" onsubmit="return confirm('BRISANJE ULOGE MOŽE ONEMOGUĆITI PRISTUP PROFILIMA SVIMA SA TOP KVALIFIKACIJOM, ŽELITE LI DA NASTAVITE?')">
+                        <input type="hidden" name="id" value="@role.Id" />
+                        <button type="submit" class="btn btn-danger" style="background-color:red">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="kreirajNovi">
+    <button ><a asp-controller="Roles" asp-action="Create">Kreiraj novu ulogu</a></button>
+</div>

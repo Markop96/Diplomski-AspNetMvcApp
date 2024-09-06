@@ -1,0 +1,96 @@
+﻿@model IEnumerable<M_RENT_Aplikacija.Models.Reservation>
+<link href="~/css/Role.css" rel="stylesheet" />
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Moje Rezervacije";
+}
+
+<style>
+    .footer {
+        position:relative;
+    }
+
+    .btn-pay {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .btn-pay:hover{
+    background-color:green !important;
+    }
+</style>
+
+<h1 class="naslov1">MOJE REZERVACIJE:</h1>
+
+<p style="text-align:center; padding-bottom:15px;">
+    <a asp-action="Create"><img src="~/Slike/dugme.png" class="dodajRezervaciju" /></a>
+</p>
+
+<table class="table" style="margin-bottom:300px !important;">
+    <thead>
+        <tr>
+            <th>
+                Automobil
+            </th>
+            <th>
+                Datum početka
+            </th>
+            <th>
+                Datum završetka
+            </th>
+            <th>
+                Broj dana
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Plačanje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.Car.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfDays) dana
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullPrice) eura
+                </td>
+
+                @if (item.IsPaid)
+                {
+                    <td style="color:greenyellow">
+                        PLAĆENO
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="Pay" asp-route-id="@item.Id" class="btn-pay" style="background-color:deeppink;color:white;font-weight:900; width:100px;">Plati</a>
+                    </td>
+                }
+               
+            </tr>
+        }
+    </tbody>
+</table>
